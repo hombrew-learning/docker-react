@@ -1,0 +1,12 @@
+language: generic
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t hombrew/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true hombrew/docker-react npm run test
